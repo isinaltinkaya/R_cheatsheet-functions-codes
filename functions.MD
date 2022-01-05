@@ -26,14 +26,11 @@ Usage:
 getp <- function (packageName){
   packageName<-deparse(substitute(packageName))
   if (!require(packageName, character.only = TRUE)) {
-    if(require(packageName,quietly = T,character.only = T)){
       print(paste0("Package ", packageName, " is available to install."))
       install.packages(packageName, dependencies = TRUE)
       library(packageName, character.only = TRUE,verbose = TRUE)
-    }else{
-      print(paste0("Package ", packageName, " is not found."))
-    }
   } else {
+    print(paste0("Loading package ", packageName))
     library(packageName, character.only = TRUE,verbose = TRUE)
   }
 }
