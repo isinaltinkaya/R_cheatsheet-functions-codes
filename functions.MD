@@ -19,6 +19,7 @@ getTables<-function(dPath,dPattern){
 Usage:
 `mergedData<-getTables("/home/isin/myDir/","\\txt$")`
 
+___
 
 ### Get package: If package exists load the package, if not try to install and load
 
@@ -36,8 +37,18 @@ getp <- function (packageName){
 }
 ```
 
-
-
 Usage:
 ```getp(ggplot2)```
 
+
+___
+
+### Check string if it is a "proper" directory
+
+```
+asDirPath <- function(string){
+  if(!endsWith(string,"/"))string=paste0(string,"/")
+  if(!dir.exists(string))warning("Directory does not exist, will exit!")
+  return(string)
+}
+```
