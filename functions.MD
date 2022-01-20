@@ -4,6 +4,7 @@
 ### Read all tables in a given `dPath` matching `dPattern`, add the file names as a new column, merge all into one list
 ```
 getTables<-function(dPath,dPattern){
+  require(plyr)
   if (!endsWith(dPath,"/")){
     dPath=paste0(dPath,"/")
   }
