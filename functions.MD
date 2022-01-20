@@ -52,3 +52,11 @@ asDirPath <- function(string){
   return(string)
 }
 ```
+
+
+___
+
+### Check if file is empty
+```
+fileIsEmpty <- function(filenames) file.info(filenames)$size == 0
+```
