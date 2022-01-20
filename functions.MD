@@ -22,24 +22,20 @@ Usage:
 
 ___
 
-### Get package: If package exists load the package, if not try to install and load
 
+### ipak function: install and load multiple R packages.
+#### Check if packages are installed; install if they are not, then load them into the R session.
+#### credit: https://gist.github.com/stevenworthington/3178163
 ```
-getp <- function (packageName){
-  packageName<-deparse(substitute(packageName))
-  if (!require(packageName, character.only = TRUE)) {
-      print(paste0("Package ", packageName, " is available to install."))
-      install.packages(packageName, dependencies = TRUE)
-      library(packageName, character.only = TRUE,verbose = TRUE)
-  } else {
-    print(paste0("Loading package ", packageName))
-    library(packageName, character.only = TRUE,verbose = TRUE)
-  }
+ipak <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg)) 
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
 }
 ```
-
 Usage:
-```getp(ggplot2)```
+```ipak(c("ggplot2","dplyr")```
 
 
 ___
