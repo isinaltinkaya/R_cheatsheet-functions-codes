@@ -23,21 +23,17 @@ Usage:
 ___
 
 
-### ipak function: install and load multiple R packages.
+### LIBRARY function: auto install and load multiple R packages.
 #### Check if packages are installed; install if they are not, then load them into the R session.
-#### credit: https://gist.github.com/stevenworthington/3178163
 ```
-ipak <- function(pkg){
-  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
-  if (length(new.pkg)) 
-    install.packages(new.pkg, dependencies = TRUE)
-  sapply(pkg, require, character.only = TRUE)
-}
+LIBRARY<-function(package) ifelse(t =!(x %in% installed.packages()), install.packages(x[t],dependencies=T),lapply(x, require))
 ```
 Usage:
-```ipak(c("ggplot2","dplyr")```
-
-
+```
+packages<-c("ggplot2","dplyr")
+packages %>% LIBRARY
+LIBRARY("ggplot2")
+```
 ___
 
 ### Check string if it is a "proper" directory
