@@ -53,3 +53,28 @@ ___
 ```
 fileIsEmpty <- function(filenames) file.info(filenames)$size == 0
 ```
+
+
+___
+
+### Convert columns of a dataframe to factor
+```
+dff<-function (df,...){
+  colname=c(...)
+  if(is.null(colname)){
+    df[] <- lapply( df, factor)
+    return(df)
+  }else{
+    df[c(colname)] <- lapply( df[c(colname)], factor) 
+    return(df)
+  }
+}
+```
+Usage:
+```
+#convert all to factor
+dff(my_dataframe) 
+
+#convert specific columns to factor
+dff(my_dataframe,c("column_id_1","column_id_2")) 
+```
