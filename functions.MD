@@ -78,3 +78,29 @@ dff(my_dataframe)
 #convert specific columns to factor
 dff(my_dataframe,c("column_id_1","column_id_2")) 
 ```
+
+___
+
+
+### Reorder column based on version sorting 
+
+```
+reorder_version_sorting <- function(col,prefix){
+  unique(col[order(as.numeric(gsub(prefix,"",col)))])
+}
+```
+Usage:
+
+```
+ggplot +...+
+      scale_x_discrete(limits=reorder_version_sorting(dd2$Rep,"rep"))
+```
+
+Before:
+```
+"rep0"  "rep10" "rep11" "rep12" "rep13" "rep14" "rep15" "rep16" "rep17" "rep18" "rep19" "rep1"  "rep2"  "rep3"  "rep4"  "rep5"  "rep6"  "rep7"  "rep8"  "rep9" 
+```
+After:
+```
+"rep0"  "rep1"  "rep2"  "rep3"  "rep4"  "rep5"  "rep6"  "rep7"  "rep8"  "rep9"  "rep10" "rep11" "rep12" "rep13" "rep14" "rep15" "rep16" "rep17" "rep18" "rep19"
+```
