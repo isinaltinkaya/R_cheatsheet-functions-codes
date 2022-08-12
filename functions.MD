@@ -104,3 +104,37 @@ After:
 ```
 "rep0"  "rep1"  "rep2"  "rep3"  "rep4"  "rep5"  "rep6"  "rep7"  "rep8"  "rep9"  "rep10" "rep11" "rep12" "rep13" "rep14" "rep15" "rep16" "rep17" "rep18" "rep19"
 ```
+
+
+
+
+```
+
+get_box_stats <- function(y,upper_limit=max(y),round=4) {
+  return(data.frame(
+    y = 0.95 * upper_limit,
+    label = paste(
+      "Count:", length(y), "\n",
+      "Mean:", formatC(mean(y),format="e",digits=round), "\n",
+      "Var:", formatC(var(y),format="e",digits=round), "\n",
+      "SD:", formatC(sd(y),format="e",digits=round), "\n",
+      "Median:", formatC(median(y),format="e",digits=round), "\n"
+    )
+  ))
+}
+
+get_box_stats2 <- function(y,upper_limit=max(y),round=4) {
+  return(data.frame(
+    y = upper_limit,
+    label = paste(
+      "Count:", length(y), "\n",
+      "Mean:", formatC(mean(y),format="e",digits=round), "\n",
+      "Var:", formatC(var(y),format="e",digits=round), "\n",
+      "SD:", formatC(sd(y),format="e",digits=round), "\n",
+      "Median:", formatC(median(y),format="e",digits=round), "\n"
+    )
+  ))
+}
+
+
+```
