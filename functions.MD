@@ -138,3 +138,16 @@ get_box_stats2 <- function(y,upper_limit=max(y),round=4) {
 
 
 ```
+
+
+
+
+### Unscale a scaled measure
+
+```
+
+unscale <- function(scaled_data){
+  scale(scale(scaled_data,center=FALSE,scale=1/attr(scaled_data,'scaled:scale')),
+        center=-attr(scaled_data,'scaled:center'),scale=FALSE)
+}
+```
